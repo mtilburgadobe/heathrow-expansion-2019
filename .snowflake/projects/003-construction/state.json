@@ -1,0 +1,31 @@
+{
+  "run": "003",
+  "slug": "construction",
+  "templateName": "heathrow",
+  "sourceUrl": "http://localhost:8000/construction.html",
+  "targetRepo": "mtilburgadobe/heathrow-expansion-2019",
+  "daRoot": "/heathrow-2019",
+  "phase": "roundtrip",
+  "phaseStatus": "complete",
+  "startedAt": "2026-05-28T00:00:00Z",
+  "captureCompletedAt": "2026-05-28T08:10:00Z",
+  "analyzeCompletedAt": "2026-05-28T08:10:30Z",
+  "generateCompletedAt": "2026-05-28T08:11:00Z",
+  "wireCompletedAt": "2026-05-28T08:11:30Z",
+  "roundtripCompletedAt": "2026-05-28T08:12:30Z",
+  "conversionLevel": "page-level",
+  "assetStrategy": "da-media",
+  "branch": "snowflake-001",
+  "localUrl": "http://localhost:3001/drafts/heathrow-construction.html",
+  "productionUrl": "https://snowflake-001--heathrow-expansion-2019--mtilburgadobe.aem.page/heathrow-2019/construction",
+  "daEditorUrl": "https://da.live/edit#/mtilburgadobe/heathrow-expansion-2019/heathrow-2019/construction",
+  "slotCount": 28,
+  "sectionCount": 5,
+  "heroImageUploaded": "https://content.da.live/mtilburgadobe/heathrow-expansion-2019/media/heathrow-2019/hero-construction.png",
+  "divergences": [
+    "No stats band in source — populated with 6.5hr night ban / 70% westerly / 50% public transport target",
+    "4 mode allocations → tl-5 slot empty",
+    "Single hero CTA in source → added ghost CTA linking to environment page"
+  ],
+  "notes": "Source has 8 data-sections (hero, alternation, mode-allocations, night-flights, early-growth, surface-access, consultation-qs, cta-band). Mapped to 5 template sections."
+}
