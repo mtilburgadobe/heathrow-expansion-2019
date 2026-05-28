@@ -1,0 +1,31 @@
+{
+  "run": "002",
+  "slug": "masterplan",
+  "templateName": "heathrow",
+  "sourceUrl": "http://localhost:8000/masterplan.html",
+  "targetRepo": "mtilburgadobe/heathrow-expansion-2019",
+  "daRoot": "/heathrow-2019",
+  "phase": "roundtrip",
+  "phaseStatus": "complete",
+  "startedAt": "2026-05-28T00:00:00Z",
+  "captureCompletedAt": "2026-05-28T08:05:00Z",
+  "analyzeCompletedAt": "2026-05-28T08:05:30Z",
+  "generateCompletedAt": "2026-05-28T08:06:00Z",
+  "wireCompletedAt": "2026-05-28T08:06:30Z",
+  "roundtripCompletedAt": "2026-05-28T08:07:30Z",
+  "conversionLevel": "page-level",
+  "assetStrategy": "da-media",
+  "branch": "snowflake-001",
+  "localUrl": "http://localhost:3001/drafts/heathrow-masterplan.html",
+  "productionUrl": "https://snowflake-001--heathrow-expansion-2019--mtilburgadobe.aem.page/heathrow-2019/masterplan",
+  "daEditorUrl": "https://da.live/edit#/mtilburgadobe/heathrow-expansion-2019/heathrow-2019/masterplan",
+  "slotCount": 28,
+  "sectionCount": 5,
+  "heroImageUploaded": "https://content.da.live/mtilburgadobe/heathrow-expansion-2019/media/heathrow-2019/hero-masterplan.png",
+  "divergences": [
+    "No stats band in source — populated with 21 components / 4 phases / 142m pax",
+    "Only 4 phases — tl-5 slot left empty",
+    "21 components — top 4 mapped to section cards"
+  ],
+  "notes": "Source has 7 data-sections (hero, overview, components, phases, infrastructure, questions, cta). Mapped to 5 template sections. stats-band derived from masterplan facts."
+}
