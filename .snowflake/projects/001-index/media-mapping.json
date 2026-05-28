@@ -1,0 +1,15 @@
+{
+  "mapping": {
+    "hero-index.png": "https://content.da.live/mtilburgadobe/heathrow-expansion-2019/media/heathrow-2019/hero-index.png"
+  },
+  "results": [
+    {
+      "localPath": "/tmp/heathrow-media/hero-index.png",
+      "remotePath": "media/heathrow-2019/hero-index.png",
+      "contentUrl": "https://content.da.live/mtilburgadobe/heathrow-expansion-2019/media/heathrow-2019/hero-index.png",
+      "size": 3730151,
+      "mime": "image/png",
+      "ok": true
+    }
+  ]
+}
