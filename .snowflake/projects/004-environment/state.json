@@ -1,0 +1,31 @@
+{
+  "run": "004",
+  "slug": "environment",
+  "templateName": "heathrow",
+  "sourceUrl": "http://localhost:8000/environment.html",
+  "targetRepo": "mtilburgadobe/heathrow-expansion-2019",
+  "daRoot": "/heathrow-2019",
+  "phase": "roundtrip",
+  "phaseStatus": "complete",
+  "startedAt": "2026-05-28T00:00:00Z",
+  "captureCompletedAt": "2026-05-28T08:15:00Z",
+  "analyzeCompletedAt": "2026-05-28T08:15:30Z",
+  "generateCompletedAt": "2026-05-28T08:16:00Z",
+  "wireCompletedAt": "2026-05-28T08:16:30Z",
+  "roundtripCompletedAt": "2026-05-28T08:17:30Z",
+  "conversionLevel": "page-level",
+  "assetStrategy": "da-media",
+  "branch": "snowflake-001",
+  "localUrl": "http://localhost:3001/drafts/heathrow-environment.html",
+  "productionUrl": "https://snowflake-001--heathrow-expansion-2019--mtilburgadobe.aem.page/heathrow-2019/environment",
+  "daEditorUrl": "https://da.live/edit#/mtilburgadobe/heathrow-expansion-2019/heathrow-2019/environment",
+  "slotCount": 30,
+  "sectionCount": 5,
+  "heroImageUploaded": "https://content.da.live/mtilburgadobe/heathrow-expansion-2019/media/heathrow-2019/hero-environment.png",
+  "divergences": [
+    "Single hero CTA → ghost CTA added (both link to have-your-say)",
+    "stats-band: real noise contour data used (825km²/108km²/~90km²) — best stats match in site",
+    "All 5 tl-slots used: EMG commitments surface access/air quality/noise/biodiversity/carbon"
+  ],
+  "notes": "Source has 9 data-sections. Stats-band is a strong match — noise contour footprint reduction data from source. All 5 timeline slots used for EMG framework commitments."
+}
