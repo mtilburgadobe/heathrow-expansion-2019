@@ -157,3 +157,43 @@ Checking each candidate first-class against CSS for layout properties:
 - `.case` → not in CSS ✅
 - `.sections` → not in CSS ✅ (was "surface" → no layout, but "sections" is cleaner)
 - `.respond` → not in CSS ✅ (`.cta-band` has no layout props, but "respond" from data-section)
+
+## Phase: Round-trip (Phase 5)
+
+### Local round-trip
+
+- AEM CLI v16.3.21 installed globally. Does NOT support `--html-folder` or `--forward-browser-logs`
+  flags. Starts on port 3000 by default. Port 3000 was occupied by a Next.js app; used `--port 3001`.
+  The `drafts/` folder is served at `/drafts/<file>.html` without any additional flags.
+- `playwright-cli` not available on PATH. Used playwright Node.js API directly
+  (installed at `~/node_modules/playwright`). Scripts run from `~/` to pick up the module.
+- Missing `scripts/heathrow-animations.js`: `delayed.js` HEAD-probes for a per-template animations
+  script. Probe 404 surfaced as 1 console error in playwright. Fix: created an empty stub
+  `scripts/heathrow-animations.js`. The delayed.js skip-if-404 logic was correct, but the browser
+  was still logging the HEAD 404 as a console error.
+- Local overlay check PASS: `overlayApplied: "heathrow"`, sectionCount=5, bodyAppear=true, 0 errors.
+- DOM equality (local): expected FAIL — +4 elements from EDS `<header class="header-wrapper"><div class="header">` injection, tag sequence diverges at position 0 for same reason. Visible text 3983 chars = 3983 chars ✓. Image src shows `content.da.live` absolute URL (not yet Media Bus rewritten at local stage) — diff script flags this since it only normalizes `./media_<sha>` patterns.
+
+### Production round-trip
+
+- Branch `snowflake-001` pushed to `mtilburgadobe/heathrow-expansion-2019`.
+- DA version snapshot created (201) before PUT — file existed from prior session.
+- DA PUT returned correct editUrl/previewUrl JSON.
+- Preview API: 200. Preview URL: `https://snowflake-001--heathrow-expansion-2019--mtilburgadobe.aem.page/heathrow-2019/`
+- Code Sync ready in 1 second. All 6 paths probed: templates, styles, fragments (header+footer), scripts — all 200.
+- Production overlay check PASS: `overlayApplied: "heathrow"`, sectionCount=5, bodyAppear=true, 0 errors.
+- **Hero image**: `heroImgSrc: "./media_105b0a105c0ac3904a626e160ce817a22a7536861.png?width=750&format=png&optimize=medium"` — Media Bus correctly rewrote the absolute `content.da.live` URL. The da-media strategy confirmed end-to-end.
+- DOM equality (production): same +4 element delta as local. Image ref now ✓ (Media Bus rewrite normalized correctly by the script). Visible text 3983 = 3983 ✓.
+
+### DA editor URL
+
+`https://da.live/edit#/mtilburgadobe/heathrow-expansion-2019/heathrow-2019/index`
+
+### Lessons for subsequent pages (002–005)
+
+- All 4 remaining pages share the `heathrow` template — no new template generation needed.
+- `scripts/heathrow-animations.js` stub already deployed.
+- `styles/heathrow.css` already deployed.
+- Only new artifacts per page: a new `drafts/heathrow-<slug>.html` and a new DA doc at `/heathrow-2019/<slug>.html`.
+- The header fragment has `class="active"` hardcoded on the Overview link — will need per-page active-link handling in later runs.
+- DOM equality baseline: +4 elements, tag sequence starts `header.header-wrapper` instead of source `nav`. Visibly identical pages should match this delta.

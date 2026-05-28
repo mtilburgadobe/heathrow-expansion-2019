@@ -1,0 +1,33 @@
+{
+  "run": "001",
+  "slug": "index",
+  "templateName": "heathrow",
+  "sourceUrl": "http://localhost:8000/index.html",
+  "targetRepo": "mtilburgadobe/heathrow-expansion-2019",
+  "daRoot": "/heathrow-2019",
+  "phase": "roundtrip",
+  "phaseStatus": "complete",
+  "generateCompletedAt": "2026-05-28T00:00:00Z",
+  "wireCompletedAt": "2026-05-28T00:00:00Z",
+  "roundtripCompletedAt": "2026-05-28T07:55:30Z",
+  "deployedPaths": [
+    "templates/heathrow.html",
+    "fragments/heathrow/header.html",
+    "fragments/heathrow/footer.html",
+    "styles/heathrow.css",
+    "scripts/heathrow-animations.js",
+    "drafts/heathrow-index.html"
+  ],
+  "slotCount": 32,
+  "sectionCount": 5,
+  "startedAt": "2026-05-28T00:00:00Z",
+  "captureCompletedAt": "2026-05-28T00:00:00Z",
+  "analyzeCompletedAt": "2026-05-28T00:00:00Z",
+  "conversionLevel": "page-level",
+  "assetStrategy": "da-media",
+  "branch": "snowflake-001",
+  "localUrl": "http://localhost:3001/drafts/heathrow-index.html",
+  "productionUrl": "https://snowflake-001--heathrow-expansion-2019--mtilburgadobe.aem.page/heathrow-2019/",
+  "daEditorUrl": "https://da.live/edit#/mtilburgadobe/heathrow-expansion-2019/heathrow-2019/index",
+  "notes": "Source is localhost-only. One image: img/hero-index.png (3.7 MB). All CSS and JS are inline. Recommendation: page-level overlay."
+}
