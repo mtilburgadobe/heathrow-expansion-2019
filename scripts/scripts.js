@@ -181,11 +181,24 @@ async function applyTemplateOverlay(main) {
     }
   }
 
-  // Load template-scoped CSS in parallel with the template HTML so
-  // styles arrive before body.appear paints. `head.html` no longer
-  // hardcodes a per-template stylesheet — each template ships its
-  // own at /styles/<template>.css.
-  const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/styles/${templateName}.css`);
+  // Load template-scoped CSS in parallel with the template HTML.
+  // Cannot use loadCSS() here: it short-circuits on any <link href="...">
+  // match, including rel="preload" links, so a preload in head.html would
+  // prevent the stylesheet from ever being created. This inline loader
+  // checks specifically for rel="stylesheet" so the preload and stylesheet
+  // can coexist and the browser serves the stylesheet from the preload cache.
+  const cssHref = `${window.hlx.codeBasePath}/styles/${templateName}.css`;
+  const cssLoaded = (() => {
+    if (document.querySelector(`head > link[rel="stylesheet"][href="${cssHref}"]`)) {
+      return Promise.resolve();
+    }
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = cssHref;
+    const p = new Promise((res, rej) => { link.onload = res; link.onerror = rej; });
+    document.head.append(link);
+    return p;
+  })();
 
   const resp = await fetch(`${window.hlx.codeBasePath}/templates/${templateName}.html`, { credentials: 'omit' });
   if (!resp.ok) {
