@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Preferred Masterplan — Heathrow Expansion Consultation 2019</title>
+<style>
+:root {
+  --color-bg: oklch(100% 0 0);
+  --color-surface: oklch(96% 0.005 305);
+  --color-text: oklch(18% 0.02 305);
+  --color-muted: oklch(45% 0.02 305);
+  --color-primary: oklch(34% 0.16 305);
+  --color-primary-dk: oklch(26% 0.14 305);
+  --color-accent: oklch(75% 0.14 85);
+  --color-border: oklch(88% 0.01 305);
+  --font: 'Trebuchet MS', Arial, sans-serif;
+  --radius: 2px;
+  --sp: 8px;
+  --pad: 64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);color:var(--color-text);background:var(--color-bg);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+
+nav{position:sticky;top:0;z-index:100;background:var(--color-bg);border-bottom:1px solid var(--color-border)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;height:64px;padding:0 24px}
+.nav-logo{font-size:1.1875rem;font-weight:700;color:var(--color-primary);white-space:nowrap;line-height:1.2}
+.nav-logo small{font-weight:400;color:var(--color-muted);font-size:0.6875rem;display:block;letter-spacing:0.08em;text-transform:uppercase}
+.nav-links{display:flex;gap:24px;list-style:none;flex:1}
+.nav-links a{font-size:0.875rem;color:var(--color-muted);padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--color-primary);border-bottom-color:var(--color-primary)}
+.nav-cta{background:var(--color-primary);color:#fff;padding:8px 20px;border-radius:var(--radius);font-size:0.875rem;font-weight:700;white-space:nowrap;transition:background .15s}
+.nav-cta:hover{background:var(--color-primary-dk)}
+
+.hero{display:grid;grid-template-columns:45fr 55fr;min-height:540px}
+.hero-photo{background:oklch(55% 0.04 145);position:relative;overflow:hidden}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.05) 100%)}
+.hero-content{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
+.hero-eyebrow{font-size:0.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:16px}
+.hero h1{font-size:clamp(2rem,3.5vw,2.875rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:24px}
+.hero-lead{font-size:1.0625rem;line-height:1.7;color:var(--color-muted);max-width:520px;margin-bottom:40px}
+.btn-group{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{background:var(--color-primary);color:#fff;padding:12px 28px;border-radius:var(--radius);font-size:0.9375rem;font-weight:700;transition:background .15s}
+.btn-primary:hover{background:var(--color-primary-dk)}
+.btn-ghost{border-bottom:2px solid var(--color-primary);color:var(--color-primary);padding:12px 0;font-size:0.9375rem;font-weight:700}
+
+.purple-band{background:var(--color-primary);color:#fff;padding:var(--pad) 24px}
+.purple-band .eyebrow{color:var(--color-accent)}
+.purple-band .sh2{color:#fff}
+.purple-band .slead{color:rgba(255,255,255,.8)}
+
+section{padding:var(--pad) 24px}
+.inner{max-width:1200px;margin:0 auto}
+section.surface{background:var(--color-surface)}
+.eyebrow{font-size:0.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:16px}
+.sh2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;line-height:1.2;letter-spacing:-0.02em;margin-bottom:16px}
+.slead{font-size:1.0625rem;line-height:1.7;color:var(--color-muted);max-width:680px;margin-bottom:48px}
+
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+
+.prose{font-size:0.9375rem;line-height:1.7}
+.prose p{margin-bottom:16px}
+.prose ul{padding-left:24px;margin-bottom:16px}
+.prose li{margin-bottom:8px}
+.prose strong{font-weight:700}
+
+.component-card{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);padding:24px;border-left:3px solid var(--color-primary)}
+.component-card .num{font-size:0.6875rem;font-weight:700;color:var(--color-primary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.component-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+.component-card p{font-size:0.875rem;color:var(--color-muted);line-height:1.5}
+
+.phase-card{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);overflow:hidden}
+.phase-head{background:var(--color-primary);color:#fff;padding:20px 24px}
+.phase-head h3{font-size:1.125rem;font-weight:700;margin-bottom:4px}
+.phase-head .phase-dates{font-size:0.8125rem;opacity:.8}
+.phase-body{padding:24px}
+.phase-body .capacity{font-size:1.5rem;font-weight:700;color:var(--color-primary);margin-bottom:4px}
+.phase-body .cap-label{font-size:0.75rem;color:var(--color-muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.phase-body ul{list-style:none;font-size:0.875rem}
+.phase-body li{padding:6px 0;border-bottom:1px solid var(--color-border);color:var(--color-muted)}
+.phase-body li:last-child{border:none}
+.phase-body li::before{content:'—';color:var(--color-primary);margin-right:8px}
+
+.cta-band{background:var(--color-primary-dk);color:#fff;padding:var(--pad) 24px;text-align:center}
+.cta-band h2{font-size:clamp(1.5rem,2.5vw,2rem);font-weight:700;margin-bottom:16px}
+.cta-band p{font-size:1rem;opacity:.85;max-width:580px;margin:0 auto 40px}
+.btn-white{background:#fff;color:var(--color-primary);padding:12px 32px;border-radius:var(--radius);font-size:0.9375rem;font-weight:700;transition:background .15s;display:inline-block}
+.btn-white:hover{background:var(--color-surface)}
+
+.q-list{list-style:none;border-top:1px solid var(--color-border)}
+.q-list li{padding:20px 0;border-bottom:1px solid var(--color-border);font-size:0.9375rem;display:flex;gap:16px;align-items:flex-start}
+.q-num{width:28px;height:28px;border-radius:50%;background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:1px}
+
+.info-box{background:oklch(34% 0.16 305 / 0.06);border-left:3px solid var(--color-primary);padding:20px 24px;border-radius:0 var(--radius) var(--radius) 0;font-size:0.875rem;line-height:1.6;color:var(--color-muted)}
+.info-box strong{color:var(--color-text)}
+
+footer{background:var(--color-text);color:#fff;padding:64px 24px 40px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand{font-size:1.1875rem;font-weight:700;margin-bottom:8px}
+.footer-brand small{font-weight:400;font-size:0.8125rem;color:rgba(255,255,255,.5);display:block}
+.footer-desc{font-size:0.875rem;color:rgba(255,255,255,.55);line-height:1.7}
+.footer-col h4{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:16px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:12px}
+.footer-col a{font-size:0.875rem;color:rgba(255,255,255,.75);transition:color .15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{padding-top:32px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;font-size:0.8125rem;color:rgba(255,255,255,.4)}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-photo{min-height:240px}
+  .hero-content{padding:48px 24px}
+  .grid-2,.grid-3,.split{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  :root{--pad:48px}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr}
+  :root{--pad:32px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Heathrow <small>Expansion Consultation</small></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="masterplan.html" class="active">Masterplan</a></li>
+      <li><a href="construction.html">Construction &amp; Operations</a></li>
+      <li><a href="environment.html">Environment &amp; Community</a></li>
+      <li><a href="have-your-say.html">Have Your Say</a></li>
+    </ul>
+    <a href="have-your-say.html" class="nav-cta">Respond now</a>
+  </div>
+</nav>
+
+<main>
+
+<section data-section="hero" style="padding:0">
+  <div class="hero">
+    <div class="hero-photo"><img src="img/hero-masterplan.png" alt="Illustrated overview of the Preferred Masterplan for expanded Heathrow" loading="eager"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Section 3 of the consultation</p>
+      <h1>The Preferred Masterplan</h1>
+      <p class="hero-lead">Our vision for a transformed Heathrow — 21 components set out in a comprehensive masterplan for a world-class three-runway airport that works for the whole of the UK.</p>
+      <div class="btn-group">
+        <a href="have-your-say.html#q1" class="btn-primary">Share your views</a>
+        <a href="construction.html" class="btn-ghost">Construction plans →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="overview">
+  <div class="inner">
+    <div class="split">
+      <div>
+        <p class="eyebrow">What the masterplan covers</p>
+        <h2 class="sh2">More than just a runway</h2>
+        <div class="prose">
+          <p>To operate a three-runway airport, we also need to build passenger facilities, infrastructure and relocate or replace some existing buildings and land uses. Our Preferred Masterplan sets out our plans for the future expansion of Heathrow.</p>
+          <p>The masterplan has been developed taking into account feedback from Airport Expansion Consultation One in January 2018, as well as community, consumer and stakeholder engagement events and ongoing design and assessment work.</p>
+          <p>The boundary of an expanded Heathrow will be carefully designed to improve the overall appearance of the airport and help it blend into the surrounding area.</p>
+          <p>The proposed northwest runway will be located to the north of the existing airport and will be approximately 3,500m long. The new runway would not be open before 2026, which is 11 years after the Airports Commission released its final report.</p>
+        </div>
+      </div>
+      <div>
+        <div class="info-box">
+          <strong>The Preferred Masterplan at a glance</strong><br><br>
+          The expanded airport will be capable of handling up to <strong>142 million passengers per annum</strong> at full build-out (Phase 4), compared to 80 million today. A new northwest runway will deliver at least 260,000 additional Air Transport Movements per year.<br><br>
+          The masterplan includes a new Central Terminal Area, a tunnelled M25, an expanded road network, and a 20km Green Loop around the airport perimeter connecting communities, open spaces and walking and cycling routes.
+        </div>
+        <br>
+        <div class="info-box">
+          <strong>21 masterplan components</strong><br><br>
+          The masterplan sets out 21 distinct components covering the new runway, terminal buildings, surface access, roads and tunnels, utilities, employment and logistics areas, and environmental infrastructure including river realignments and the Green Loop.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="components" class="surface">
+  <div class="inner">
+    <p class="eyebrow">The 21 components</p>
+    <h2 class="sh2">What we are proposing to build</h2>
+    <p class="slead">The Preferred Masterplan comprises 21 separate components spanning airfield infrastructure, passenger terminals, surface access, communities and the environment.</p>
+    <div class="grid-3">
+      <div class="component-card">
+        <div class="num">Airfield</div>
+        <h3>New Northwest Runway</h3>
+        <p>A new 3,500m runway to the northwest of the existing airport. The runway will not open before 2026. M25 will be placed in a tunnel beneath it.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Airfield</div>
+        <h3>New Taxiways and Aprons</h3>
+        <p>A network of new taxiways and aircraft stands to serve the additional runway and expanded terminal facilities.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Terminals</div>
+        <h3>New Terminal Facilities</h3>
+        <p>New and expanded terminal buildings to provide the additional passenger capacity needed as the airport grows through its four phases.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Terminals</div>
+        <h3>Expanded Central Terminal Area</h3>
+        <p>Redevelopment and expansion of the existing central terminal area including Terminals 2, 3, 4 and 5 to serve a growing passenger base.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Surface Access</div>
+        <h3>M25 Tunnel</h3>
+        <p>The M25 motorway will be placed in a tunnel under the new northwest runway. This is a major piece of civil engineering infrastructure.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Surface Access</div>
+        <h3>New Road Network</h3>
+        <p>Diversion of existing roads, construction of new local roads and connections, and new junctions to serve the expanded airport.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Surface Access</div>
+        <h3>Southern Access Tunnel</h3>
+        <p>A proposed new tunnel providing southern access to the Central Terminal Area, transforming Heathrow's accessibility from south London and Surrey.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Surface Access</div>
+        <h3>Rail and Public Transport</h3>
+        <p>Enhanced rail connections including Elizabeth Line (Crossrail), Western Rail Link, Southern Rail Access and expanded bus and coach services.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Environment</div>
+        <h3>Green Loop</h3>
+        <p>A 20km walking and cycling loop around the airport perimeter connecting communities, open spaces and biodiversity sites to public spaces and paths.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Environment</div>
+        <h3>River Realignments</h3>
+        <p>Diversion of the River Colne, Wraysbury River, Longford River and other watercourses in the Colne Valley to accommodate the new runway footprint.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Environment</div>
+        <h3>Flood Storage Areas</h3>
+        <p>New flood storage areas upstream of the airport, designed as multi-functional spaces for biodiversity and public open space.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Communities</div>
+        <h3>Harmondsworth Conservation Area</h3>
+        <p>The new runway has been carefully positioned to retain the historic High Street and the Harmondsworth conservation area. A new Visitor Centre is proposed around the Great Barn and St Mary's Church.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Communities</div>
+        <h3>Employment Sites</h3>
+        <p>New and relocated employment sites, including logistics and cargo facilities, positioned close to public transport hubs to reduce car travel for colleagues.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Communities</div>
+        <h3>Community Facilities</h3>
+        <p>Replacement of community facilities including sports pitches, allotments and public open spaces displaced by construction.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Utilities</div>
+        <h3>Utilities and Energy</h3>
+        <p>New utility infrastructure including electricity, gas, water and sewerage to serve the expanded airport campus, including provision for plug-in electrical power for parked aircraft.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Freight</div>
+        <h3>Cargo and Freight</h3>
+        <p>Doubled cargo capacity with new off-airport waiting areas for HGVs and improved logistics management to reduce freight vehicles on local roads.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Parking</div>
+        <h3>Car Parking Consolidation</h3>
+        <p>Consolidation of car parking at 'parkways' around the airport perimeter with high-frequency shuttle links to terminals, reducing on-site parking per passenger.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Airfield</div>
+        <h3>Noise Screens and Barriers</h3>
+        <p>Displaced landing thresholds and noise barriers embedded in the airport design to reduce ground noise for communities closest to the airport boundary.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Environment</div>
+        <h3>Biodiversity Net Gain</h3>
+        <p>Large areas of multi-functional green infrastructure designed to benefit both wildlife and people. Commitment to achieve net gain in biodiversity.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Buildings</div>
+        <h3>Relocated Buildings and Land Uses</h3>
+        <p>Some existing buildings and community facilities will need to be moved, including the Immigration Removal Centres at Harmondsworth and Colnbrook.</p>
+      </div>
+      <div class="component-card">
+        <div class="num">Environment</div>
+        <h3>Landscape and Visual Design</h3>
+        <p>A Landscape Strategy and Landscape Toolkit to ensure the expanded airport blends into its surroundings, using ecological woodland and biodiverse grassland.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="phases" class="purple-band">
+  <div class="inner">
+    <p class="eyebrow">Construction timeline</p>
+    <h2 class="sh2">Four phases of development</h2>
+    <p class="slead">The construction and opening of Heathrow will be delivered in four phases spanning from 2021 to approximately 2050, growing capacity from today's 80 million passengers to 142 million at full build-out.</p>
+    <div class="grid-2" style="gap:24px">
+      <div class="phase-card">
+        <div class="phase-head">
+          <h3>Phase 1 — Early Works</h3>
+          <div class="phase-dates">Approximately 2021–2026</div>
+        </div>
+        <div class="phase-body">
+          <div class="capacity">~80mppa</div>
+          <div class="cap-label">Capacity (existing)</div>
+          <ul>
+            <li>M25 diversion and tunnel construction</li>
+            <li>River diversions in the Colne Valley</li>
+            <li>Initial earthworks and site preparation</li>
+            <li>Taxiway and apron construction begins</li>
+            <li>Surface access improvements begin</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-head">
+          <h3>Phase 2 — Runway Opens</h3>
+          <div class="phase-dates">Approximately 2026–2030</div>
+        </div>
+        <div class="phase-body">
+          <div class="capacity">115mppa</div>
+          <div class="cap-label">Target capacity</div>
+          <ul>
+            <li>New northwest runway opens (target ~2026)</li>
+            <li>New terminal facilities operational</li>
+            <li>Southern access tunnel opens</li>
+            <li>Elizabeth Line and Western Rail Link serving airport</li>
+            <li>Night flight ban (23:00–05:30) in effect from opening</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-head">
+          <h3>Phase 3 — Additional Capacity</h3>
+          <div class="phase-dates">Approximately 2030–2035</div>
+        </div>
+        <div class="phase-body">
+          <div class="capacity">130mppa</div>
+          <div class="cap-label">Target capacity</div>
+          <ul>
+            <li>Further terminal expansion</li>
+            <li>Additional airfield infrastructure</li>
+            <li>Expanded Central Terminal Area</li>
+            <li>Further surface access improvements</li>
+            <li>Green Loop fully open to public</li>
+          </ul>
+        </div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-head">
+          <h3>Phase 4 — Full Build-Out</h3>
+          <div class="phase-dates">Approximately 2035–2050</div>
+        </div>
+        <div class="phase-body">
+          <div class="capacity">142mppa</div>
+          <div class="cap-label">Full build-out capacity</div>
+          <ul>
+            <li>All terminal and airfield facilities complete</li>
+            <li>Full cargo capacity (doubled from today)</li>
+            <li>Complete surface access network operational</li>
+            <li>All environmental mitigation measures in place</li>
+            <li>Zero carbon infrastructure by 2050</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="infrastructure">
+  <div class="inner">
+    <p class="eyebrow">Key infrastructure proposals</p>
+    <h2 class="sh2">Making Heathrow fit for the future</h2>
+    <p class="slead">The masterplan is designed around four principles: growing responsibly within environmental limits, providing world-class surface access, creating a great place to work and visit, and protecting and enhancing the local environment.</p>
+    <div class="split">
+      <div>
+        <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:16px;color:var(--color-primary)">Surface access — no more airport-related traffic</h3>
+        <div class="prose">
+          <p>We have pledged to deliver expansion with no more airport-related traffic on the roads than there is today. Our Surface Access Proposals cover seven areas:</p>
+          <ul>
+            <li><strong>Public transport</strong> — 50% of passenger trips by public transport by 2030, 55% by 2040</li>
+            <li><strong>Colleague travel</strong> — reduce colleague car trips by 25% by 2030, 50% by 2040</li>
+            <li><strong>Road user charging</strong> — Heathrow Ultra-Low Emission Zone (HULEZ) from 2022; Heathrow Vehicle Access Charge (HVAC) from runway opening</li>
+            <li><strong>Intelligent mobility</strong> — Heathrow Travel Wallet, personalised journey information services</li>
+            <li><strong>Car parking</strong> — consolidated parkways; increase in EV charging provision</li>
+            <li><strong>Freight</strong> — off-airport HGV holding areas; doubled cargo capacity</li>
+            <li><strong>Taxi and private hire</strong> — increased backfilling to reduce empty vehicles</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:16px;color:var(--color-primary)">The Green Loop</h3>
+        <div class="prose">
+          <p>A key feature of the masterplan is the planned Green Loop — a 20km walking and cycling route around the airport perimeter. The Green Loop will:</p>
+          <ul>
+            <li>Improve connectivity around the airport and into nearby communities</li>
+            <li>Link landscaped areas, public open spaces and biodiversity sites</li>
+            <li>Connect historic places including Harmondsworth village and the Great Barn</li>
+            <li>Provide new walking and cycling routes between communities and parkways</li>
+          </ul>
+        </div>
+        <br>
+        <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:16px;color:var(--color-primary)">Harmondsworth village</h3>
+        <div class="prose">
+          <p>Following feedback from Airport Expansion Consultation One, we have reduced the amount of development in the Mayfield Farm area. The proposed runway has been carefully positioned to retain the historic High Street and the most significant built heritage assets — including the Harmondsworth conservation area and the medieval Great Barn.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="questions" class="surface">
+  <div class="inner" style="max-width:800px">
+    <p class="eyebrow">Consultation questions — Masterplan</p>
+    <h2 class="sh2">Tell us what you think</h2>
+    <p class="slead">We want to hear your views on our Preferred Masterplan. Questions 1–5 in the consultation questionnaire relate to the masterplan.</p>
+    <ul class="q-list">
+      <li>
+        <div class="q-num">1</div>
+        <div>Please tell us what you think about any specific parts of our Preferred Masterplan or the components that make up the masterplan.</div>
+      </li>
+      <li>
+        <div class="q-num">2</div>
+        <div>Please tell us what you think about the sites we have identified for buildings and facilities we are proposing to move.</div>
+      </li>
+      <li>
+        <div class="q-num">3</div>
+        <div>Please tell us what you think of our boundary design proposals to manage noise and the effects on views around the boundary of the expanded airport.</div>
+      </li>
+      <li>
+        <div class="q-num">4</div>
+        <div>Please tell us what you think about our development proposals and the measures proposed to reduce effects in affected local areas.</div>
+      </li>
+      <li>
+        <div class="q-num">5</div>
+        <div>Please tell us what you think of our construction proposals and the ways we are proposing to minimise effects on communities and the environment.</div>
+      </li>
+    </ul>
+    <div style="margin-top:32px">
+      <a href="have-your-say.html" class="btn-primary">Respond to the consultation</a>
+    </div>
+  </div>
+</section>
+
+<div data-section="cta" class="cta-band">
+  <h2>Explore the construction and operations proposals</h2>
+  <p>Find out how we plan to build the expanded airport across four phases and how it will operate once the third runway is open.</p>
+  <a href="construction.html" class="btn-white">Construction &amp; Operations →</a>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Heathrow <small>Airport Expansion Consultation 2019</small></div>
+        <p class="footer-desc">This consultation runs from 18 June to 13 September 2019. Heathrow Airport Limited is seeking views on its preferred proposals for a new northwest runway at Heathrow Airport.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="masterplan.html">Masterplan</a></li>
+          <li><a href="construction.html">Construction</a></li>
+          <li><a href="environment.html">Environment</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Respond</h4>
+        <ul>
+          <li><a href="have-your-say.html">Have your say</a></li>
+          <li><a href="have-your-say.html#events">Consultation events</a></li>
+          <li><a href="have-your-say.html#questions">All 24 questions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">0800 307 7996</a></li>
+          <li><a href="#">feedback@heathrowconsultation.com</a></li>
+          <li><a href="#">aec.heathrowconsultation.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© Heathrow Airport Limited 2019</span>
+      <span>Consultation deadline: 13 September 2019, 11:55pm</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+{
+  "levelParam": "auto",
+  "conversionLevel": "page-level",
+  "templateName": "heathrow",
+  "synthesizeMain": false,
+  "feasibility": {
+    "recommendation": "page-level",
+    "reasons": [
+      "Shared utility CSS classes (.split, .inner, .prose, .timeline, .eyebrow, .sh2, .slead, .grid-2) used across sections — cannot isolate per-block",
+      "All CSS in one inline <style> block, no per-section boundary",
+      "hero section's .hero class has display:grid — cannot use as section first-class"
+    ],
+    "sections": [
+      {
+        "name": "hero-block",
+        "level": "page",
+        "checks": {
+          "structure": "pass",
+          "cssScope": "fail — .hero{display:grid} layout collision if used as section first-class; renamed to hero-block",
+          "contentModel": "pass",
+          "jsIndependence": "pass",
+          "visualIndependence": "pass"
+        }
+      },
+      {
+        "name": "stats-band",
+        "level": "block-feasible",
+        "checks": {
+          "structure": "pass — div rewritten to section",
+          "cssScope": "pass",
+          "contentModel": "pass",
+          "jsIndependence": "pass",
+          "visualIndependence": "pass"
+        }
+      },
+      {
+        "name": "case",
+        "level": "page",
+        "checks": {
+          "structure": "pass",
+          "cssScope": "fail — uses shared utilities: .split, .inner, .prose, .timeline",
+          "contentModel": "warn — complex split+timeline layout awkward to author in DA rows",
+          "jsIndependence": "pass",
+          "visualIndependence": "pass"
+        }
+      },
+      {
+        "name": "sections",
+        "level": "page",
+        "checks": {
+          "structure": "pass",
+          "cssScope": "fail — uses shared utilities: .inner, .eyebrow, .sh2, .slead, .grid-2",
+          "contentModel": "pass",
+          "jsIndependence": "pass",
+          "visualIndependence": "pass"
+        }
+      },
+      {
+        "name": "respond",
+        "level": "block-feasible",
+        "checks": {
+          "structure": "pass — div rewritten to section",
+          "cssScope": "pass",
+          "contentModel": "pass",
+          "jsIndependence": "pass",
+          "visualIndependence": "pass"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "firstClass": "hero-block",
+      "originalTag": "section",
+      "rewriteToSection": false,
+      "addFirstClass": true,
+      "originalClass": null,
+      "dataSectionAttr": "hero",
+      "inlineStyle": "padding:0",
+      "slots": [
+        { "name": "hero.image", "type": "image", "selector": ".hero-photo img" },
+        { "name": "hero.eyebrow", "type": "text", "selector": ".hero-eyebrow" },
+        { "name": "hero.title", "type": "text", "selector": ".hero h1" },
+        { "name": "hero.lead", "type": "text", "selector": ".hero-lead" },
+        { "name": "hero.cta-primary", "type": "link", "selector": ".btn-primary" },
+        { "name": "hero.cta-ghost", "type": "link", "selector": ".btn-ghost" }
+      ]
+    },
+    {
+      "firstClass": "stats-band",
+      "originalTag": "div",
+      "rewriteToSection": true,
+      "dataSectionAttr": "stats",
+      "originalClass": "stats-band",
+      "slots": [
+        { "name": "stat-1.num", "type": "text", "selector": ".stats-inner > div:nth-child(1) .stat-num" },
+        { "name": "stat-1.label", "type": "text", "selector": ".stats-inner > div:nth-child(1) .stat-label" },
+        { "name": "stat-2.num", "type": "text", "selector": ".stats-inner > div:nth-child(2) .stat-num" },
+        { "name": "stat-2.label", "type": "text", "selector": ".stats-inner > div:nth-child(2) .stat-label" },
+        { "name": "stat-3.num", "type": "text", "selector": ".stats-inner > div:nth-child(3) .stat-num" },
+        { "name": "stat-3.label", "type": "text", "selector": ".stats-inner > div:nth-child(3) .stat-label" }
+      ]
+    },
+    {
+      "firstClass": "case",
+      "originalTag": "section",
+      "rewriteToSection": false,
+      "addFirstClass": true,
+      "originalClass": null,
+      "dataSectionAttr": "case",
+      "slots": [
+        { "name": "case.eyebrow-left", "type": "text", "selector": ".split > div:first-child .eyebrow" },
+        { "name": "case.title", "type": "text", "selector": ".sh2" },
+        { "name": "case.prose", "type": "text", "selector": ".prose" },
+        { "name": "case.eyebrow-right", "type": "text", "selector": ".split > div:last-child .eyebrow" },
+        { "name": "tl-1.year", "type": "text", "selector": ".timeline > li:nth-child(1) .tl-year" },
+        { "name": "tl-1.text", "type": "text", "selector": ".timeline > li:nth-child(1) .tl-text" },
+        { "name": "tl-2.year", "type": "text", "selector": ".timeline > li:nth-child(2) .tl-year" },
+        { "name": "tl-2.text", "type": "text", "selector": ".timeline > li:nth-child(2) .tl-text" },
+        { "name": "tl-3.year", "type": "text", "selector": ".timeline > li:nth-child(3) .tl-year" },
+        { "name": "tl-3.text", "type": "text", "selector": ".timeline > li:nth-child(3) .tl-text" },
+        { "name": "tl-4.year", "type": "text", "selector": ".timeline > li:nth-child(4) .tl-year" },
+        { "name": "tl-4.text", "type": "text", "selector": ".timeline > li:nth-child(4) .tl-text" },
+        { "name": "tl-5.year", "type": "text", "selector": ".timeline > li:nth-child(5) .tl-year" },
+        { "name": "tl-5.text", "type": "text", "selector": ".timeline > li:nth-child(5) .tl-text" }
+      ]
+    },
+    {
+      "firstClass": "sections",
+      "originalTag": "section",
+      "rewriteToSection": false,
+      "originalClass": "surface",
+      "reorderClass": "sections surface",
+      "dataSectionAttr": "sections",
+      "slots": [
+        { "name": "sections.eyebrow", "type": "text", "selector": ".inner > .eyebrow" },
+        { "name": "sections.title", "type": "text", "selector": ".inner > .sh2" },
+        { "name": "sections.lead", "type": "text", "selector": ".slead" },
+        { "name": "card-1.num", "type": "text", "selector": ".topic-card:nth-child(1) .tc-num" },
+        { "name": "card-1.title", "type": "text", "selector": ".topic-card:nth-child(1) h3" },
+        { "name": "card-1.body", "type": "text", "selector": ".topic-card:nth-child(1) > p" },
+        { "name": "card-1.link", "type": "link", "selector": ".topic-card:nth-child(1)" },
+        { "name": "card-2.num", "type": "text", "selector": ".topic-card:nth-child(2) .tc-num" },
+        { "name": "card-2.title", "type": "text", "selector": ".topic-card:nth-child(2) h3" },
+        { "name": "card-2.body", "type": "text", "selector": ".topic-card:nth-child(2) > p" },
+        { "name": "card-2.link", "type": "link", "selector": ".topic-card:nth-child(2)" },
+        { "name": "card-3.num", "type": "text", "selector": ".topic-card:nth-child(3) .tc-num" },
+        { "name": "card-3.title", "type": "text", "selector": ".topic-card:nth-child(3) h3" },
+        { "name": "card-3.body", "type": "text", "selector": ".topic-card:nth-child(3) > p" },
+        { "name": "card-3.link", "type": "link", "selector": ".topic-card:nth-child(3)" },
+        { "name": "card-4.num", "type": "text", "selector": ".topic-card:nth-child(4) .tc-num" },
+        { "name": "card-4.title", "type": "text", "selector": ".topic-card:nth-child(4) h3" },
+        { "name": "card-4.body", "type": "text", "selector": ".topic-card:nth-child(4) > p" },
+        { "name": "card-4.link", "type": "link", "selector": ".topic-card:nth-child(4)" }
+      ],
+      "note": "topic-card <a> elements: slot the link on the card itself (card-N.link), NOT on the .tc-link span inside (container-vs-children rule)"
+    },
+    {
+      "firstClass": "respond",
+      "originalTag": "div",
+      "rewriteToSection": true,
+      "originalClass": "cta-band",
+      "reorderClass": "respond cta-band",
+      "dataSectionAttr": "respond",
+      "slots": [
+        { "name": "respond.deadline", "type": "text", "selector": ".deadline-chip" },
+        { "name": "respond.title", "type": "text", "selector": "h2" },
+        { "name": "respond.body", "type": "text", "selector": "p" },
+        { "name": "respond.cta", "type": "link", "selector": ".btn-white" }
+      ]
+    }
+  ],
+  "headLinks": [],
+  "inlineStyleBlock": { "startLine": 7, "endLine": 119, "extractTo": "styles/heathrow.css" },
+  "inlineScriptBlocks": [],
+  "externalLibs": [],
+  "assetStrategy": "da-media",
+  "assets": [
+    {
+      "sourceRelPath": "img/hero-index.png",
+      "localCapturePath": ".snowflake/projects/001-index/input/hero-index.png",
+      "sizeBytes": 3730151,
+      "daMediaPath": "/heathrow-2019/hero-index.png",
+      "status": "pending-upload"
+    }
+  ],
+  "strip": [],
+  "notes": "topic-card <a> is a container link — slot the <a> element itself for card-N.link, not the .tc-link span inside"
+}

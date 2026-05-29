@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Construction &amp; Operations — Heathrow Expansion Consultation 2019</title>
+<style>
+:root {
+  --color-bg: oklch(100% 0 0);
+  --color-surface: oklch(96% 0.005 305);
+  --color-text: oklch(18% 0.02 305);
+  --color-muted: oklch(45% 0.02 305);
+  --color-primary: oklch(34% 0.16 305);
+  --color-primary-dk: oklch(26% 0.14 305);
+  --color-accent: oklch(75% 0.14 85);
+  --color-border: oklch(88% 0.01 305);
+  --font: 'Trebuchet MS', Arial, sans-serif;
+  --radius: 2px;
+  --sp: 8px;
+  --pad: 64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);color:var(--color-text);background:var(--color-bg);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+nav{position:sticky;top:0;z-index:100;background:var(--color-bg);border-bottom:1px solid var(--color-border)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;height:64px;padding:0 24px}
+.nav-logo{font-size:1.1875rem;font-weight:700;color:var(--color-primary);white-space:nowrap;line-height:1.2}
+.nav-logo small{font-weight:400;color:var(--color-muted);font-size:0.6875rem;display:block;letter-spacing:0.08em;text-transform:uppercase}
+.nav-links{display:flex;gap:24px;list-style:none;flex:1}
+.nav-links a{font-size:0.875rem;color:var(--color-muted);padding:4px 0;border-bottom:2px solid transparent;transition:color .15s,border-color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--color-primary);border-bottom-color:var(--color-primary)}
+.nav-cta{background:var(--color-primary);color:#fff;padding:8px 20px;border-radius:var(--radius);font-size:0.875rem;font-weight:700;white-space:nowrap;transition:background .15s}
+.nav-cta:hover{background:var(--color-primary-dk)}
+
+.hero{display:grid;grid-template-columns:45fr 55fr;min-height:520px}
+.hero-photo{background:oklch(16% 0.01 220);position:relative;overflow:hidden}
+.hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.08) 100%)}
+.hero-content{padding:72px 64px;display:flex;flex-direction:column;justify-content:center}
+.hero-eyebrow{font-size:0.6875rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:16px}
+.hero h1{font-size:clamp(1.875rem,3vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin-bottom:20px}
+.hero-lead{font-size:1.0625rem;line-height:1.7;color:var(--color-muted);max-width:500px;margin-bottom:36px}
+.btn-primary{background:var(--color-primary);color:#fff;padding:12px 28px;border-radius:var(--radius);font-size:0.9375rem;font-weight:700;transition:background .15s;display:inline-block}
+.btn-primary:hover{background:var(--color-primary-dk)}
+
+section{padding:var(--pad) 24px}
+.inner{max-width:1200px;margin:0 auto}
+section.surface{background:var(--color-surface)}
+.eyebrow{font-size:0.6875rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--color-primary);margin-bottom:16px}
+.sh2{font-size:clamp(1.625rem,2.5vw,2.25rem);font-weight:700;line-height:1.2;letter-spacing:-0.02em;margin-bottom:16px}
+.slead{font-size:1.0625rem;line-height:1.7;color:var(--color-muted);max-width:640px;margin-bottom:40px}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+
+.prose{font-size:0.9375rem;line-height:1.7}
+.prose p{margin-bottom:16px}
+.prose ul{padding-left:24px;margin-bottom:16px}
+.prose li{margin-bottom:8px}
+.prose strong{color:var(--color-text)}
+
+.mode-card{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);overflow:hidden}
+.mode-head{background:var(--color-primary);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
+.mode-label{font-size:0.8125rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.mode-tag{font-size:0.75rem;background:rgba(255,255,255,.15);padding:3px 10px;border-radius:1px}
+.mode-body{padding:20px}
+.mode-row{display:flex;justify-content:space-between;font-size:0.875rem;padding:6px 0;border-bottom:1px solid var(--color-border)}
+.mode-row:last-child{border-bottom:none}
+.mode-row span:first-child{color:var(--color-muted)}
+.mode-row span:last-child{font-weight:600}
+
+.day-cycle{display:flex;gap:8px;align-items:center;justify-content:center;padding:24px 0}
+.day-box{background:var(--color-primary);color:#fff;border-radius:var(--radius);padding:16px;text-align:center;flex:1}
+.day-box .day-num{font-size:1.5rem;font-weight:700;line-height:1}
+.day-box .day-modes{font-size:0.75rem;margin-top:4px;opacity:.85}
+.day-arrow{color:var(--color-muted);font-size:1.25rem}
+
+.purple-band{background:var(--color-primary);color:#fff;padding:var(--pad) 24px}
+.purple-band .eyebrow{color:oklch(75% 0.14 85)}
+.purple-band .sh2{color:#fff}
+.purple-band .slead{color:rgba(255,255,255,.8)}
+
+.info-card{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);padding:24px;border-left:3px solid var(--color-accent)}
+.info-card h4{font-size:0.875rem;font-weight:700;margin-bottom:8px}
+.info-card p{font-size:0.875rem;color:var(--color-muted);line-height:1.6}
+
+.access-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.access-card{background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);padding:24px}
+.access-icon{font-size:1.5rem;margin-bottom:12px}
+.access-card h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.access-card p{font-size:0.875rem;color:var(--color-muted);line-height:1.6}
+
+.highlight-box{background:var(--color-primary);color:#fff;border-radius:var(--radius);padding:24px 28px;display:flex;align-items:center;gap:24px;margin-bottom:32px}
+.hb-num{font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1;color:var(--color-accent);white-space:nowrap}
+.hb-text{font-size:0.9375rem;line-height:1.6;opacity:.95}
+
+.q-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+.q-list li{display:flex;gap:16px;align-items:flex-start;font-size:0.9375rem}
+.q-num{min-width:28px;height:28px;border-radius:50%;background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;flex-shrink:0;margin-top:2px}
+
+.cta-band{background:var(--color-primary-dk);color:#fff;padding:var(--pad) 24px;text-align:center}
+.cta-band h2{font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;margin-bottom:16px}
+.cta-band p{font-size:1.0625rem;opacity:.85;max-width:560px;margin:0 auto 32px}
+.btn-white{background:#fff;color:var(--color-primary);padding:14px 36px;border-radius:var(--radius);font-size:1rem;font-weight:700;transition:background .15s;display:inline-block}
+.btn-white:hover{background:var(--color-surface)}
+
+footer{background:var(--color-text);color:#fff;padding:64px 24px 40px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand{font-size:1.1875rem;font-weight:700;margin-bottom:8px}
+.footer-brand small{font-weight:400;font-size:0.8125rem;color:rgba(255,255,255,.5);display:block}
+.footer-desc{font-size:0.875rem;color:rgba(255,255,255,.55);line-height:1.7}
+.footer-col h4{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.45);margin-bottom:16px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:12px}
+.footer-col a{font-size:0.875rem;color:rgba(255,255,255,.75);transition:color .15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{padding-top:32px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center;font-size:0.8125rem;color:rgba(255,255,255,.4)}
+
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-photo{min-height:220px}
+  .hero-content{padding:48px 24px}
+  .split,.grid-2,.access-grid{grid-template-columns:1fr}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  :root{--pad:48px}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr}
+  .grid-4{grid-template-columns:1fr}
+  .day-cycle{flex-wrap:wrap;justify-content:space-around;gap:12px}
+  .day-arrow{display:none}
+  .day-box{flex:none;width:calc(50% - 6px)}
+  :root{--pad:32px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Heathrow <small>Expansion Consultation</small></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="masterplan.html">Masterplan</a></li>
+      <li><a href="construction.html" class="active">Construction &amp; Operations</a></li>
+      <li><a href="environment.html">Environment &amp; Community</a></li>
+      <li><a href="have-your-say.html">Have Your Say</a></li>
+    </ul>
+    <a href="have-your-say.html" class="nav-cta">Respond now</a>
+  </div>
+</nav>
+
+<main>
+
+<section data-section="hero" style="padding:0">
+  <div class="hero">
+    <div class="hero-photo"><img src="img/hero-construction.png" alt="Aircraft at Heathrow terminal gates at golden hour" loading="eager"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Future Operations</div>
+      <h1>Running a three-runway Heathrow</h1>
+      <p class="hero-lead">Our proposals for runway alternation, night flight restrictions, directional preference and early growth set out how we will operate a larger Heathrow responsibly.</p>
+      <a href="have-your-say.html" class="btn-primary">Share your views</a>
+    </div>
+  </div>
+</section>
+
+<section data-section="alternation">
+  <div class="inner">
+    <div class="eyebrow">Section 5.1</div>
+    <h2 class="sh2">Runway alternation</h2>
+    <p class="slead">During westerly operations we run a two-week alternation cycle, switching runways at 3pm each day. Every week communities under both runway paths get predictable respite from aircraft noise for half the day.</p>
+    <div class="split">
+      <div class="prose">
+        <p>When the wind blows from the west (about 70% of the year), planes land and take off towards the west. Our current two-runway alternation switches the landing runway and take-off runway at 3pm, so communities get respite in either the morning or afternoon on alternate weeks.</p>
+        <p>At the end of each week we switch completely — what we did in the evening the previous week, we now do in the morning, and vice versa. This gives each community a full week of morning respite and a full week of evening respite.</p>
+        <p>With three runways, we will extend this further. The proposed pattern runs in a four-day cycle through four <strong>mode allocations</strong>, each defining whether each runway is used for arrivals, departures, or mixed-mode operations. This rotation ensures communities at the ends of all three runways receive regular breaks from overflying regardless of wind direction.</p>
+        <p>We are also proposing <strong>Reflective Alternation</strong>: when the wind changes direction mid-cycle, communities continue to receive the respite they were expecting — something not possible today because of the legacy Cranford Agreement.</p>
+      </div>
+      <div>
+        <div class="info-card" style="margin-bottom:24px">
+          <h4>What is the Cranford Agreement?</h4>
+          <p>An agreement between the Government and residents of Cranford which restricted northerly runway take-offs in an easterly direction over the village. It is no longer in place. With a third runway we will be able to alternate runways even during easterly operations, delivering respite for communities that have not had it before.</p>
+        </div>
+        <div class="info-card">
+          <h4>What is mode allocation?</h4>
+          <p>Mode allocation describes how runway modes (arrivals-only, departures-only, or mixed) are distributed across all three runways at any one time. With three runways we can rotate through four different mode allocations, giving communities at the end of each runway a predictable break from aircraft overhead.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="mode-allocations" class="surface">
+  <div class="inner">
+    <div class="eyebrow">Four mode allocations</div>
+    <h2 class="sh2">How the four-day cycle works</h2>
+    <p class="slead">We rotate through four mode allocations in a repeating four-day sequence. Within each day the change from the first allocation to the second can happen at either 14:00 or 15:00 — we are seeking views on this timing.</p>
+    <div class="grid-2" style="margin-bottom:40px">
+      <div class="mode-card">
+        <div class="mode-head"><span class="mode-label">Mode Allocation 1</span><span class="mode-tag">Westerly</span></div>
+        <div class="mode-body">
+          <div class="mode-row"><span>Northern runway (A)</span><span>Mixed mode</span></div>
+          <div class="mode-row"><span>Central runway (B)</span><span>No planes overhead</span></div>
+          <div class="mode-row"><span>Southern runway (C)</span><span>Departures</span></div>
+          <div class="mode-row"><span>Communities under D/E/F</span><span>Landings or respite</span></div>
+        </div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-head"><span class="mode-label">Mode Allocation 2</span><span class="mode-tag">Westerly</span></div>
+        <div class="mode-body">
+          <div class="mode-row"><span>Northern runway (A)</span><span>Mixed mode</span></div>
+          <div class="mode-row"><span>Central runway (B)</span><span>Departures</span></div>
+          <div class="mode-row"><span>Southern runway (C)</span><span>No planes overhead</span></div>
+          <div class="mode-row"><span>Communities under E</span><span>No planes overhead</span></div>
+        </div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-head"><span class="mode-label">Mode Allocation 3</span><span class="mode-tag">Westerly</span></div>
+        <div class="mode-body">
+          <div class="mode-row"><span>Northern runway (A)</span><span>No planes overhead</span></div>
+          <div class="mode-row"><span>Central runway (B)</span><span>Departures</span></div>
+          <div class="mode-row"><span>Southern runway (C)</span><span>Mixed mode</span></div>
+          <div class="mode-row"><span>Communities under E</span><span>No planes overhead</span></div>
+        </div>
+      </div>
+      <div class="mode-card">
+        <div class="mode-head"><span class="mode-label">Mode Allocation 4</span><span class="mode-tag">Westerly</span></div>
+        <div class="mode-body">
+          <div class="mode-row"><span>Northern runway (A)</span><span>Departures</span></div>
+          <div class="mode-row"><span>Central runway (B)</span><span>No planes overhead</span></div>
+          <div class="mode-row"><span>Southern runway (C)</span><span>Mixed mode</span></div>
+          <div class="mode-row"><span>Communities under D</span><span>No planes overhead</span></div>
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius);padding:24px">
+      <p class="eyebrow" style="margin-bottom:8px">Four-day sequence</p>
+      <div class="day-cycle">
+        <div class="day-box"><div class="day-num">1</div><div class="day-modes">1 → 3</div></div>
+        <div class="day-arrow">→</div>
+        <div class="day-box"><div class="day-num">2</div><div class="day-modes">4 → 1</div></div>
+        <div class="day-arrow">→</div>
+        <div class="day-box"><div class="day-num">3</div><div class="day-modes">2 → 4</div></div>
+        <div class="day-arrow">→</div>
+        <div class="day-box"><div class="day-num">4</div><div class="day-modes">3 → 2</div></div>
+        <div class="day-arrow">→</div>
+        <div class="day-box" style="background:var(--color-primary-dk)"><div class="day-num">1</div><div class="day-modes">repeats</div></div>
+      </div>
+      <p style="font-size:0.875rem;color:var(--color-muted);text-align:center">On Day 5 the sequence repeats from Day 1. The mode changes within each day at 14:00 or 15:00 and again at midnight to prepare for the following day's pattern.</p>
+    </div>
+  </div>
+</section>
+
+<section data-section="night-flights">
+  <div class="inner">
+    <div class="split">
+      <div>
+        <div class="eyebrow">Section 5.2</div>
+        <h2 class="sh2">Ban on scheduled night flights</h2>
+        <div class="highlight-box">
+          <div class="hb-num">6.5hr</div>
+          <div class="hb-text">ban on scheduled night flights from <strong>23:00 to 05:30</strong> — the longest scheduled ban at any hub airport in Europe, using a single runway for early morning arrivals to give each community at least 7 hours' respite between 22:00 and 07:00.</div>
+        </div>
+        <div class="prose">
+          <p>Night flights are an important part of operations at airports worldwide. Time-zone differences mean it is difficult to avoid arrivals and departures at night and early in the morning. However, the Airports NPS sets out the Government's expectation that with expansion we should have a 6.5-hour ban on <strong>scheduled</strong> flights.</p>
+          <p>Scheduled times are the times shown on your departure board. Runway time is when the aircraft actually touches down or lifts off — typically 10–20 minutes later due to taxiing.</p>
+          <p><strong>Early morning arrivals from 05:30</strong> will use a single runway only. Feedback from previous consultations strongly preferred the 05:30 start over 05:45 because fewer communities would be overflown. The runway used will change each morning in line with our alternation proposals, ensuring communities each get at least 7 hours' respite.</p>
+          <p><strong>Recovery periods</strong> allow Heathrow to manage aircraft delayed into the night period, using one runway each for: departures from 23:00 until midnight (1 hour of recovery beyond the last scheduled departure), and arrivals from 23:00 until 23:30 (30 minutes of recovery beyond the last scheduled arrival). This reduces the risk of disruption to passengers and the airline network.</p>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow">Section 5.3</div>
+        <h2 class="sh2">Directional preference</h2>
+        <div class="prose">
+          <p>The direction aircraft arrive and depart from depends on the wind — for safety, aircraft take off and land into the wind. Currently a <strong>'westerly preference'</strong> applies when winds are light (below 5 knots), meaning aircraft continue to operate towards the west even when it would be technically safe to go in either direction.</p>
+          <p>On an expanded Heathrow, we propose to replace westerly preference with a <strong>'managed preference'</strong>. This will be based on a set of criteria — still to be determined — designed to limit overall noise effects on communities and deliver longer periods of respite when combined with runway alternation.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:24px">
+          <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);padding:16px;text-align:center">
+            <div style="font-size:2rem;font-weight:700;color:var(--color-primary);line-height:1">70%</div>
+            <div style="font-size:0.75rem;color:var(--color-muted);margin-top:4px">Westerly winds above 5 knots</div>
+          </div>
+          <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);padding:16px;text-align:center">
+            <div style="font-size:2rem;font-weight:700;color:var(--color-primary);line-height:1">30%</div>
+            <div style="font-size:0.75rem;color:var(--color-muted);margin-top:4px">Easterly winds above 5 knots</div>
+          </div>
+          <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius);padding:16px;text-align:center">
+            <div style="font-size:2rem;font-weight:700;color:var(--color-primary);line-height:1">20%</div>
+            <div style="font-size:0.75rem;color:var(--color-muted);margin-top:4px">Calm winds — managed preference applies</div>
+          </div>
+        </div>
+        <p style="font-size:0.875rem;color:var(--color-muted);margin-top:16px">The managed preference applies only to the 20% of time when winds are below 5 knots and aircraft can safely operate in either direction. It does not apply to the remaining 80% when wind direction is determinative.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="early-growth" class="surface">
+  <div class="inner">
+    <div class="eyebrow">Section 5.4</div>
+    <h2 class="sh2">Early growth</h2>
+    <p class="slead">The Airports NPS identifies the urgent need for increased airport capacity. Before the new runway opens we propose to bring some of the additional capacity forward on our existing two runways — up to 25,000 additional Air Transport Movements per year.</p>
+    <div class="split">
+      <div class="prose">
+        <p>Heathrow is currently capped at 480,000 ATMs per year. We have been operating at around 98% of that cap since 2005, to the detriment of consumer and economic interests. The main part of expansion is the new third runway, which will not be open before 2026 — 11 years after the Airports Commission recommended it.</p>
+        <p>New navigation technology allows us to make more efficient use of our existing two runways. In September 2016 we published proposals for up to 25,000 additional ATMs on existing infrastructure, and we want to deliver those benefits as soon as practicable.</p>
+        <p>To ensure early growth does not adversely affect communities or the environment, we propose the following commitments:</p>
+        <ul>
+          <li>Our Environmentally Managed Growth strategy will apply from the outset of early growth</li>
+          <li>Our Noise Insulation Scheme will be introduced from the beginning of early growth</li>
+          <li>Surface Access Proposals will be developed ensuring no more airport-related traffic on roads than today</li>
+          <li>The night flight ban from 05:30 will apply for three runways (not just two) from the start of early growth</li>
+        </ul>
+      </div>
+      <div>
+        <div style="background:var(--color-primary);color:#fff;border-radius:var(--radius);padding:32px;text-align:center;margin-bottom:24px">
+          <div style="font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:var(--color-accent);line-height:1;margin-bottom:8px">+25,000</div>
+          <div style="font-size:1rem;opacity:.9">additional ATMs per year on existing runways before the third runway opens</div>
+        </div>
+        <div class="info-card">
+          <h4>Maintaining airport efficiency during early growth</h4>
+          <p>We will continue to invest in development of infrastructure, technology and people; retain our current scheduling processes to mitigate delays; and balance additional flights in peak and off-peak periods with our operational performance and resilience commitments.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="surface-access">
+  <div class="inner">
+    <div class="eyebrow">Section 6</div>
+    <h2 class="sh2">Surface access proposals</h2>
+    <p class="slead">Expansion is a unique opportunity to change how people and goods travel to, from and around the airport. We are committed to delivering expansion with no more airport-related traffic on roads than today, and at least 50% of passenger trips by public transport by 2030.</p>
+    <div class="access-grid">
+      <div class="access-card">
+        <div class="access-icon">🚇</div>
+        <h3>Public transport</h3>
+        <p>Making best use of existing services including Crossrail (Elizabeth Line) and Heathrow Express, supporting committed improvements, and developing new routes including a Western Rail Link and Southern Rail Access to Heathrow.</p>
+      </div>
+      <div class="access-card">
+        <div class="access-icon">🚲</div>
+        <h3>Colleague travel</h3>
+        <p>Fundamentally changing how over 76,000 on-site colleagues travel to work. New cycle lanes, expanded Heathrow Cycle Hub, and relocating employment to public-transport-accessible locations to reduce car trips by 25% by 2030 and 50% by 2040.</p>
+      </div>
+      <div class="access-card">
+        <div class="access-icon">🚗</div>
+        <h3>Car parking</h3>
+        <p>Consolidating car parking at parkways around the airport with high-frequency links to terminals. Phased reduction of colleague parking per passenger, with increased provision for electric and zero-emission vehicles.</p>
+      </div>
+      <div class="access-card">
+        <div class="access-icon">🏙️</div>
+        <h3>Road user charging</h3>
+        <p>A Heathrow Ultra Low Emissions Zone (HULEZ) by 2022, then a Heathrow Vehicle Access Charge from the opening of the third runway, applying to all passenger cars, taxis and private hire vehicles entering car parks and forecourts.</p>
+      </div>
+      <div class="access-card">
+        <div class="access-icon">🚕</div>
+        <h3>Taxi &amp; private hire</h3>
+        <p>Taxi and private hire will remain important for areas with limited public transport. We will increase 'backfilling' — matching passengers to drivers in both directions — to minimise empty vehicle miles and improve efficiency.</p>
+      </div>
+      <div class="access-card">
+        <div class="access-icon">🚛</div>
+        <h3>Freight &amp; intelligent mobility</h3>
+        <p>Doubling cargo capacity while minimising cargo vehicle trips through consolidation. Intelligent Mobility innovations including a Heathrow Travel Wallet and enhanced real-time transport information for colleagues and passengers.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-section="consultation-qs" class="surface">
+  <div class="inner">
+    <div class="eyebrow">Your views</div>
+    <h2 class="sh2">Consultation questions 6–11</h2>
+    <p class="slead">These questions cover future operations and surface access. You can respond online, by post or at one of 50+ consultation events across London and the South East.</p>
+    <ul class="q-list">
+      <li><span class="q-num">6</span><span>Please tell us what you think of our runway alternation proposals, in particular whether you think we should alternate the runways at 2pm or 3pm.</span></li>
+      <li><span class="q-num">7</span><span>Please tell us what you think of our preferred proposal for a ban on scheduled night flights, and/or whether you would prefer an alternative proposal.</span></li>
+      <li><span class="q-num">8</span><span>Please tell us what you think about our proposals for managing early growth.</span></li>
+      <li><span class="q-num">9</span><span>Please tell us what you think of our surface access proposals and how we could further encourage or improve public transport access to the airport.</span></li>
+      <li><span class="q-num">10</span><span>Please tell us what you think about our proposals for the Heathrow Ultra Low Emission Zone and Heathrow Vehicle Access Charge as ways to manage congestion and air quality impacts.</span></li>
+      <li><span class="q-num">11</span><span>Do you have any other comments on our Surface Access Proposals?</span></li>
+    </ul>
+  </div>
+</section>
+
+<section data-section="cta-band" class="cta-band" style="padding-top:var(--pad);padding-bottom:var(--pad)">
+  <h2>Next: Environment &amp; Community</h2>
+  <p>Explore our approach to noise, air quality, biodiversity, community impacts and property compensation.</p>
+  <a href="environment.html" class="btn-white">Environment &amp; Community →</a>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Heathrow <small>Expansion Consultation 2019</small></div>
+        <p class="footer-desc">This microsite summarises the 2019 Airport Expansion Consultation. For full technical documents, visit aec.heathrowconsultation.com</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="masterplan.html">Masterplan</a></li>
+          <li><a href="construction.html">Construction &amp; Ops</a></li>
+          <li><a href="environment.html">Environment</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Respond</h4>
+        <ul>
+          <li><a href="have-your-say.html">Have your say</a></li>
+          <li><a href="have-your-say.html">All 24 questions</a></li>
+          <li><a href="have-your-say.html">Events near you</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="have-your-say.html">0800 307 7996</a></li>
+          <li><a href="have-your-say.html">feedback@heathrow<br>consultation.com</a></li>
+          <li><a href="have-your-say.html">Freepost LHR AIRPORT EXPANSION CONSULTATION</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Deadline: 13 September 2019 at 11:55pm</span>
+      <span>© Heathrow Airport Limited 2019</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

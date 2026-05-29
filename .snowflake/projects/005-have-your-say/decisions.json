@@ -1,0 +1,56 @@
+{
+  "run": "005",
+  "slug": "have-your-say",
+  "conversionLevel": "page-level",
+  "templateName": "heathrow",
+  "assetStrategy": "da-media",
+  "heroImage": null,
+  "heroImageUpload": "reuse-index",
+  "slotMapping": {
+    "hero-block": {
+      "divergence": "No hero image or eyebrow in source — using index hero image as contextual fallback",
+      "hero.image": "reuse hero-index.png from DA media",
+      "hero.eyebrow": "Airport Expansion Consultation · June–September 2019",
+      "hero.title": "Have your say on the future of Heathrow",
+      "hero.lead": "This is our statutory consultation on preferred proposals for Heathrow expansion. Your feedback is really important and will help determine our final proposals.",
+      "hero.cta-primary": "<a href=\"#respond\">Respond to the consultation</a>",
+      "hero.cta-ghost": "<a href=\"masterplan.html\">Explore the proposals →</a>"
+    },
+    "stats-band": {
+      "divergence": "No stats in source — derived from consultation scope",
+      "stat-1.num": "24",
+      "stat-1.label": "Consultation questions across all topics",
+      "stat-2.num": "50+",
+      "stat-2.label": "Events across London and the South East",
+      "stat-3.num": "4",
+      "stat-3.label": "Ways to respond: online, email, post, phone"
+    },
+    "case": {
+      "case.eyebrow-left": "The consultation",
+      "case.title": "Your views will shape the final application",
+      "case.prose": "hero section full prose",
+      "case.eyebrow-right": "Response methods",
+      "tl-1..tl-4": "4 response methods: online, email, post, phone"
+    },
+    "sections": {
+      "sections.eyebrow": "All 24 consultation questions",
+      "sections.title": "Four topic areas",
+      "sections.lead": "questions section intro",
+      "cards": "4 cards: Masterplan (Q1-5), Construction & Operations (Q6-11), Environment & Community (Q12-21), Your views (Q22-24)"
+    },
+    "respond": {
+      "source": "big-cta section",
+      "respond.deadline": "Respond before 13 September 2019 at 11:55pm",
+      "respond.title": "Your feedback is really important to us",
+      "respond.body": "big-cta prose",
+      "respond.cta": "<a href=\"https://aec.heathrowconsultation.com\">Respond online now</a>"
+    }
+  },
+  "divergenceNotes": [
+    "No hero image in source — reusing hero-index.png from run 001",
+    "No stats band in source — derived from consultation scope (24 questions / 50+ events / 4 methods)",
+    "case.prose uses full hero section text (longer than typical); tl-1..tl-4 used for 4 response methods",
+    "sections cards group questions by topic area rather than individual questions",
+    "respond.cta links to external consultation URL"
+  ]
+}

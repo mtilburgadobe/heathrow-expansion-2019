@@ -1,0 +1,54 @@
+{
+  "run": "002",
+  "slug": "masterplan",
+  "conversionLevel": "page-level",
+  "templateName": "heathrow",
+  "assetStrategy": "da-media",
+  "heroImage": "img/hero-masterplan.png",
+  "heroImageUpload": "needed",
+  "slotMapping": {
+    "hero-block": {
+      "hero.image": "img/hero-masterplan.png → https://content.da.live/mtilburgadobe/heathrow-expansion-2019/media/heathrow-2019/hero-masterplan.png",
+      "hero.eyebrow": "Section 3 of the consultation",
+      "hero.title": "The Preferred Masterplan",
+      "hero.lead": "Our vision for a transformed Heathrow — 21 components set out in a comprehensive masterplan for a world-class three-runway airport that works for the whole of the UK.",
+      "hero.cta-primary": "<a href=\"have-your-say.html#q1\">Share your views</a>",
+      "hero.cta-ghost": "<a href=\"construction.html\">Construction plans →</a>"
+    },
+    "stats-band": {
+      "divergence": "masterplan page has no numeric stats; template stats-band used with key masterplan facts instead",
+      "stat-1.num": "21",
+      "stat-1.label": "Components in the masterplan",
+      "stat-2.num": "4",
+      "stat-2.label": "Phases of construction",
+      "stat-3.num": "2050",
+      "stat-3.label": "Target full build-out year"
+    },
+    "case": {
+      "case.eyebrow-left": "The masterplan",
+      "case.title": "More than just a runway",
+      "case.prose": "Source: overview + infrastructure sections",
+      "case.eyebrow-right": "Construction timeline",
+      "tl-1..tl-4": "Four phases: Phase 1 Early Works 2021–2026, Phase 2 Runway Opens 2026–2030, Phase 3 Additional Capacity 2030–2035, Phase 4 Full Build-Out ~2050"
+    },
+    "sections": {
+      "sections.eyebrow": "What we are proposing to build",
+      "sections.title": "21 components",
+      "sections.lead": "description from components section",
+      "cards": "4 cards from top components"
+    },
+    "respond": {
+      "source": "questions + cta-band sections",
+      "respond.deadline": "Consultation closes 13 September 2019 at 11:55pm",
+      "respond.title": "Tell us what you think",
+      "respond.body": "Questions 1–5 in the questionnaire relate to the masterplan.",
+      "respond.cta": "<a href=\"have-your-say.html#q1\">Have your say now</a>"
+    }
+  },
+  "divergenceNotes": [
+    "No numeric stats band on source page — template stats-band populated with masterplan key facts (21 components, 4 phases, 2050 build-out)",
+    "components section has 21 items — mapped to 4 representative cards in sections block",
+    "phases section (4 items) maps cleanly to tl-1..tl-4 (only 4 used of 5 template slots)",
+    "cta section is a page-navigation band, not a respond form — re-mapped to respond block"
+  ]
+}

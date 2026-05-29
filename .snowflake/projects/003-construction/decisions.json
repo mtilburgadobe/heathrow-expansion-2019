@@ -1,0 +1,53 @@
+{
+  "run": "003",
+  "slug": "construction",
+  "conversionLevel": "page-level",
+  "templateName": "heathrow",
+  "assetStrategy": "da-media",
+  "heroImage": "img/hero-construction.png",
+  "heroImageUpload": "needed",
+  "slotMapping": {
+    "hero-block": {
+      "hero.image": "img/hero-construction.png → https://content.da.live/mtilburgadobe/heathrow-expansion-2019/media/heathrow-2019/hero-construction.png",
+      "hero.eyebrow": "Future Operations",
+      "hero.title": "Running a three-runway Heathrow",
+      "hero.lead": "Our proposals for runway alternation, night flight restrictions, directional preference and early growth set out how we will operate a larger Heathrow responsibly.",
+      "hero.cta-primary": "<a href=\"have-your-say.html\">Share your views</a>",
+      "hero.cta-ghost": "<a href=\"environment.html\">Environment &amp; Community →</a>"
+    },
+    "stats-band": {
+      "divergence": "No stats band in source; derived from operations key facts",
+      "stat-1.num": "6.5hr",
+      "stat-1.label": "Scheduled night flight ban (23:00–05:30)",
+      "stat-2.num": "70%",
+      "stat-2.label": "Of the year, planes land and take off westerly",
+      "stat-3.num": "50%",
+      "stat-3.label": "Of passenger trips by public transport by 2030"
+    },
+    "case": {
+      "case.eyebrow-left": "Runway alternation",
+      "case.title": "Respite for every community",
+      "case.prose": "alternation + mode-allocations sections prose",
+      "case.eyebrow-right": "Operations cycle",
+      "tl-1..tl-4": "4 mode allocations"
+    },
+    "sections": {
+      "sections.eyebrow": "How the airport will work",
+      "sections.title": "Four operational priorities",
+      "sections.lead": "surface-access intro",
+      "cards": "4 cards: alternation, night flights, early growth, surface access"
+    },
+    "respond": {
+      "source": "consultation-qs + cta-band",
+      "respond.deadline": "Consultation closes 13 September 2019 at 11:55pm",
+      "respond.title": "Tell us what you think about operations",
+      "respond.body": "Questions 6–11 cover future operations and surface access.",
+      "respond.cta": "<a href=\"have-your-say.html#q6\">Have your say now</a>"
+    }
+  },
+  "divergenceNotes": [
+    "No stats band in source — template populated with key operations facts",
+    "8 data-sections mapped to 5 template sections",
+    "4 mode allocations mapped to tl-1..tl-4; tl-5 empty"
+  ]
+}

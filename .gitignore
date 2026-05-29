@@ -11,3 +11,12 @@ helix-importer-ui
 # Ensure these files are tracked
 !CLAUDE.md
 !AGENTS.md
+# Snowflake skill: in-progress run state (committed only on close)
+.snowflake/projects/*/state.json
+# Local Claude Code skills (not project artifacts)
+.claude/
+# Snowflake: captured source images (uploaded to da-media, not vendored in git)
+.snowflake/projects/*/input/*.png
+.snowflake/projects/*/input/*.jpg
+.snowflake/projects/*/input/*.gif
+.snowflake/projects/*/input/*.webp

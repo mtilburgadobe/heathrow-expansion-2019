@@ -1,0 +1,53 @@
+{
+  "run": "004",
+  "slug": "environment",
+  "conversionLevel": "page-level",
+  "templateName": "heathrow",
+  "assetStrategy": "da-media",
+  "heroImage": "img/hero-environment.png",
+  "heroImageUpload": "needed",
+  "slotMapping": {
+    "hero-block": {
+      "hero.image": "img/hero-environment.png → https://content.da.live/mtilburgadobe/heathrow-expansion-2019/media/heathrow-2019/hero-environment.png",
+      "hero.eyebrow": "Environment & Community",
+      "hero.title": "Developing Heathrow responsibly and sustainably",
+      "hero.lead": "Expansion is not a choice between the economy and the environment — it must deliver for both. Our environmental framework commits us to grow only within strict limits monitored by an independent body.",
+      "hero.cta-primary": "<a href=\"have-your-say.html\">Share your views</a>",
+      "hero.cta-ghost": "<a href=\"have-your-say.html\">Respond to the consultation →</a>"
+    },
+    "stats-band": {
+      "note": "Noise contour stats extracted from noise section",
+      "stat-1.num": "825km²",
+      "stat-1.label": "57dB noise footprint in 1974",
+      "stat-2.num": "108km²",
+      "stat-2.label": "57dB noise footprint in 2013",
+      "stat-3.num": "~90km²",
+      "stat-3.label": "Forecast 57dB footprint in 2035 with mitigation"
+    },
+    "case": {
+      "case.eyebrow-left": "Environmental framework",
+      "case.title": "Growing within environmental limits",
+      "case.prose": "emg section prose",
+      "case.eyebrow-right": "Our commitments",
+      "tl-1..tl-5": "5 EMG commitments: surface access, air quality, noise, carbon, biodiversity"
+    },
+    "sections": {
+      "sections.eyebrow": "Managing the effects of expansion",
+      "sections.title": "Four areas of community impact",
+      "sections.lead": "eia-overview intro",
+      "cards": "4 cards: noise, community, community fund, property"
+    },
+    "respond": {
+      "source": "consultation-qs + cta-band",
+      "respond.deadline": "Consultation closes 13 September 2019 at 11:55pm",
+      "respond.title": "Help shape our environmental commitments",
+      "respond.body": "Questions 12–21 cover managing effects of expansion, environmentally managed growth, community fund, and property compensation.",
+      "respond.cta": "<a href=\"have-your-say.html#q12\">Have your say now</a>"
+    }
+  },
+  "divergenceNotes": [
+    "stats-band populated with actual noise contour data from source (good match)",
+    "5 EMG commitments available — maps to all 5 tl-slots",
+    "9 data-sections mapped to 5 template sections"
+  ]
+}
