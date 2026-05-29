@@ -67,6 +67,22 @@ function parseFirst(value, selector) {
 function writeSlot(el, value) {
   const { tagName } = el;
   if (tagName === 'IMG') {
+    // If the DA cell contains a <picture>, upgrade the template <img> to the
+    // full picture so WebP/AVIF <source> elements are preserved. Copy
+    // loading and fetchpriority from the template img to the new inner img.
+    const newPic = parseFirst(value, 'picture');
+    if (newPic) {
+      const newImg = newPic.querySelector('img');
+      if (newImg) {
+        const loading = el.getAttribute('loading');
+        const fetchpriority = el.getAttribute('fetchpriority');
+        if (loading) newImg.setAttribute('loading', loading);
+        if (fetchpriority) newImg.setAttribute('fetchpriority', fetchpriority);
+        if (el.alt && !newImg.alt) newImg.alt = el.alt;
+      }
+      el.replaceWith(newPic);
+      return;
+    }
     const img = parseFirst(value, 'img');
     if (img) {
       el.src = img.getAttribute('src');
@@ -170,12 +186,16 @@ async function applyTemplateOverlay(main) {
   if (heroImageHtml) {
     const tmp = document.createElement('div');
     tmp.innerHTML = heroImageHtml;
+    // Prefer the mobile WebP source (no media query) so the preload matches
+    // the resource the browser actually renders. Fall back to img.src (PNG).
+    const mobileWebP = tmp.querySelector('source[type="image/webp"]:not([media])');
     const heroImg = tmp.querySelector('img');
-    if (heroImg?.src) {
+    const rawSrc = (mobileWebP?.getAttribute('srcset') ?? heroImg?.src ?? '').trim().split(/[\s,]+/)[0];
+    if (rawSrc) {
       const preload = document.createElement('link');
       preload.rel = 'preload';
       preload.as = 'image';
-      preload.href = heroImg.src;
+      preload.href = rawSrc;
       preload.fetchPriority = 'high';
       document.head.appendChild(preload);
     }
