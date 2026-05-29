@@ -162,6 +162,25 @@ async function applyTemplateOverlay(main) {
 
   const slots = readBlockSlots(main);
 
+  // Preload the LCP hero image as soon as its URL is known from the DA
+  // slot data — before the template fetch completes. Eliminates the
+  // discovery delay where the browser can't see the image URL until after
+  // main.innerHTML is replaced.
+  const heroImageHtml = slots['hero-block']?.['hero.image'];
+  if (heroImageHtml) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = heroImageHtml;
+    const heroImg = tmp.querySelector('img');
+    if (heroImg?.src) {
+      const preload = document.createElement('link');
+      preload.rel = 'preload';
+      preload.as = 'image';
+      preload.href = heroImg.src;
+      preload.fetchPriority = 'high';
+      document.head.appendChild(preload);
+    }
+  }
+
   // Load template-scoped CSS in parallel with the template HTML so
   // styles arrive before body.appear paints. `head.html` no longer
   // hardcodes a per-template stylesheet — each template ships its
