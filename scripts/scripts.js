@@ -187,7 +187,7 @@ async function applyTemplateOverlay(main) {
   // own at /styles/<template>.css.
   const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/styles/${templateName}.css`);
 
-  const resp = await fetch(`${window.hlx.codeBasePath}/templates/${templateName}.html`);
+  const resp = await fetch(`${window.hlx.codeBasePath}/templates/${templateName}.html`, { credentials: 'omit' });
   if (!resp.ok) {
     // eslint-disable-next-line no-console
     console.warn(`[overlay] template not found: ${templateName}`);
